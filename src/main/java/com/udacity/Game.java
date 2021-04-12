@@ -148,9 +148,70 @@ public class Game {
      * @param grid 2D array of characters representing the game board
      * @return String indicating the outcome of the game: "X wins" or "O wins" or "Tie" or "None"
      */
-    public String checkGameWinner(char [][]grid){
+   public String checkGameWinner(char [][]grid)
+    {
         String result = "None";
         //Student code goes here ...
+        boolean t;
+        int c= 0;
+        for(int i=0 ; i < 3 ; i++)
+        {
+            int xc1 = 0 , xc2 = 0 , yc1 = 0 , yc2 = 0;
+            t = false;
+
+            for(int j = 0 ; j <3 ; j++)
+            {
+                if(grid[i][j] == 'x')
+                {
+                    xc1++;
+                }
+                if(grid[j][i]== 'x')
+                {
+                    xc2++;
+                }
+                if(grid[i][j]=='o')
+                {
+                    yc1++;
+                }
+                if(grid[j][i]=='o')
+                {
+                    yc2++;
+                }
+                if(grid[i][j]!='-')
+                {
+                    c++;
+                }
+            }
+            if(xc1==3 || xc2==3)
+            {
+                return "x wins";
+            }
+            else if(yc1==3 || yc2==3)
+            {
+                return "o wins";
+            }
+            else
+            {
+                t=true;
+            }
+        }
+        if(( grid[0][0]=='x' && grid[1][1]=='x' && grid[2][2]== 'x' )
+                || ( grid[2][0]== 'x' && grid[1][1]== 'x' && grid[0][2]== 'x' ))
+        {
+            return "x wins";
+        }
+        else if(( grid[0][0]=='o' && grid[1][1]=='o' && grid[2][2]== 'o' )
+                || ( grid[2][0]=='o' && grid[1][1] =='o' && grid[0][2]== 'o' ))
+        {
+            return "o wins";
+        }
+        if(c==9)
+        {
+            if(t==true)
+            {
+                return "tie";
+            }
+        }
         return result;
     }
 
